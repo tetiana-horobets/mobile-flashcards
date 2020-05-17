@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { LOAD_DECKS, SELECT_DECK } from './Actions.js'
+import { LOAD_DECKS, SELECT_DECK, DELETE_DECK } from './Actions.js'
 import { combineReducers } from 'redux'
 
 function decksReducer(state = {}, action) {
@@ -13,6 +13,10 @@ function decksReducer(state = {}, action) {
 function selectedDeckReducer(state = null, action) {
   if (action.type === SELECT_DECK) {
     return action.selectedDeck;
+  }
+
+  if (action.type === DELETE_DECK) {
+    return null;
   }
   return state;
 }

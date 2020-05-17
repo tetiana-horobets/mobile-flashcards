@@ -1,8 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
+import {deleteDeck} from '../store/ActionCreators.js';
 
 class DeckDetailView extends React.Component {
+
+  deleteDeck() {
+    this.props.deleteDeck(this.props.selectedDeck);
+    this.props.navigation.navigate('Home');
+  }
+
   render() {
     if (!this.props.selectedDeck || !this.props.decks[this.props.selectedDeck]) {
       return <View style={styles.container}>
@@ -14,6 +21,10 @@ class DeckDetailView extends React.Component {
     return <View style={styles.container}>
       <Text>{deck.title}</Text>
       <Text>{deck.questions.length} cards</Text>
+      <Button
+        title="Delete deck"
+        onPress={() => this.deleteDeck()}
+      />
     </View>
   }
 }
@@ -34,7 +45,7 @@ const mapStateToProps = state => {
   };
 }
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {deleteDeck}
 
 export default connect(
   mapStateToProps,

@@ -22,4 +22,9 @@ export default class Api {
     return AsyncStorage.mergeItem('decks', deckJson)
       .then(() => id);
   }
+
+  deleteDeck(id) {
+    console.log(id);
+    return Promise.resolve({});
+  }
 }
