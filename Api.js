@@ -28,4 +28,8 @@ export default class Api {
       }
     });
   }
+
+  createDeck(deck) {
+    console.log(deck);
+  }
 }
