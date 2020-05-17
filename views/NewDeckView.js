@@ -13,6 +13,7 @@ export default class NewDeckView extends React.Component {
 
   createDeck() {
     this.api.createDeck({title: this.state.title})
+      .then(() => this.props.navigation.navigate('DeckDetail'));
   }
 
   render() {
