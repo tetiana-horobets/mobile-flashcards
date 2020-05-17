@@ -1,19 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import Api from '../Api.js';
+import { connect } from 'react-redux';
+import {createDeck} from '../store/ActionCreators.js';
 
-export default class NewDeckView extends React.Component {
+class NewDeckView extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.api = new Api();
     this.state = {title: ''};
   }
 
   createDeck() {
-    this.api.createDeck({title: this.state.title})
-      .then(() => this.props.navigation.navigate('DeckDetail'));
+    this.props.createDeck({title: this.state.title});
+    this.props.navigation.navigate('DeckDetail');
+    this.setState({title: ''});
   }
 
   render() {
@@ -40,3 +41,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+const mapStateToProps = state => {
+  return {}
+}
+
+const mapDispatchToProps = {createDeck}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewDeckView);

@@ -1,18 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
-import Api from '../Api.js';
+import { connect } from 'react-redux';
+import {loadDecks} from '../store/ActionCreators.js';
 
-export default class DeckListView extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.api = new Api();
-    this.state = {decks: {}};
-  }
+class DeckListView extends React.Component {
 
   componentDidMount() {
-    this.api.getDecks().then(data => this.setState({decks: data}));
+    this.props.loadDecks();
   }
 
   renderDeck(deck) {
@@ -23,7 +17,7 @@ export default class DeckListView extends React.Component {
   }
 
   render() {
-    const decks = Object.values(this.state.decks);
+    const decks = Object.values(this.props.decks);
 
     return <View style={styles.container}>
       <FlatList
@@ -47,3 +41,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+const mapStateToProps = state => {
+  return {
+    decks: state.decks,
+  }
+}
+
+const mapDispatchToProps = {loadDecks}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DeckListView);
