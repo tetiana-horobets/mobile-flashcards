@@ -3,6 +3,7 @@ export default class Api {
   getDecks() {
     return Promise.resolve({
       React: {
+        id: 'React',
         title: 'React',
         questions: [
           {
@@ -16,6 +17,7 @@ export default class Api {
         ]
       },
       JavaScript: {
+        id: 'JavaScript',
         title: 'JavaScript',
         questions: [
           {
