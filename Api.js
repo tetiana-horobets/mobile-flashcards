@@ -19,6 +19,7 @@ export default class Api {
       questions: deck.questions || []
     };
     const deckJson = JSON.stringify(newDeck);
-    return AsyncStorage.mergeItem('decks', deckJson);
+    return AsyncStorage.mergeItem('decks', deckJson)
+      .then(() => id);
   }
 }

@@ -1,5 +1,6 @@
 import {
-  LOAD_DECKS
+  LOAD_DECKS,
+  SELECT_DECK
 } from './Actions.js';
 import Api from '../Api.js';
 
@@ -17,8 +18,16 @@ export function createDeck(deck) {
     return dispatch => {
       const api = new Api();
       api.createDeck(deck)
-        .then(data => {
+        .then(id => {
+          dispatch(selectDeck(id));
           loadDecks()(dispatch);
         })
+  }
+}
+
+export function selectDeck(id) {
+  return {
+    type: SELECT_DECK,
+    selectedDeck: id
   }
 }

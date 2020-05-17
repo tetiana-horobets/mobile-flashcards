@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { LOAD_DECKS } from './Actions.js'
+import { LOAD_DECKS, SELECT_DECK } from './Actions.js'
 import { combineReducers } from 'redux'
 
 function decksReducer(state = {}, action) {
@@ -10,8 +10,16 @@ function decksReducer(state = {}, action) {
   return state;
 }
 
+function selectedDeckReducer(state = null, action) {
+  if (action.type === SELECT_DECK) {
+    return action.selectedDeck;
+  }
+  return state;
+}
+
 const store = createStore(combineReducers({
-  decks: decksReducer
+  decks: decksReducer,
+  selectedDeck: selectedDeckReducer
 }), applyMiddleware(thunk));
 
 export default store;
