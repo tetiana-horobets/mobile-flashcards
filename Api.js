@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native';
+import _ from 'lodash';
 
 export default class Api {
 
@@ -24,7 +25,11 @@ export default class Api {
   }
 
   deleteDeck(id) {
-    console.log(id);
-    return Promise.resolve({});
+    return new Promise(resolve => {
+      this.getDecks().then(decks => {
+        const newDecks = JSON.stringify(_.omit(decks, id));
+        AsyncStorage.setItem('decks', newDecks).then(resolve);
+      });
+    });
   }
 }
