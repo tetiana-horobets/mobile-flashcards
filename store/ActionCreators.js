@@ -39,6 +39,16 @@ export function deleteDeck(id) {
   }
 }
 
+export function createCard(card) {
+    return dispatch => {
+      const api = new Api();
+      api.createCard(card)
+        .then(() => {
+          loadDecks()(dispatch);
+        })
+  }
+}
+
 export function selectDeck(id) {
   return {
     type: SELECT_DECK,

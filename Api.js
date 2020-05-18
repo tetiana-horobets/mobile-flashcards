@@ -32,4 +32,9 @@ export default class Api {
       });
     });
   }
+
+  createCard(card) {
+    console.log(card.deckId, card.question, card.answer);
+    return Promise.resolve({});
+  }
 }
