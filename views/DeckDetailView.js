@@ -26,6 +26,10 @@ class DeckDetailView extends React.Component {
         onPress={() => this.props.navigation.navigate('NewCard')}
       />
       <Button
+        title="Start quiz"
+        onPress={() => this.props.navigation.navigate('Quiz')}
+      />
+      <Button
         title="Delete deck"
         onPress={() => this.deleteDeck()}
       />

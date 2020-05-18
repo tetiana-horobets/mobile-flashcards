@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import DeckListView from './DeckListView.js';
 import DeckDetailView from './DeckDetailView.js';
 import NewCardView from './NewCardView.js';
+import QuizView from './QuizView.js';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default class HomeView extends React.Component {
       />
       <Stack.Screen name="DeckDetail" component={DeckDetailView} />
       <Stack.Screen name="NewCard" component={NewCardView} />
+      <Stack.Screen name="Quiz" component={QuizView} />
     </Stack.Navigator>
   }
 }
