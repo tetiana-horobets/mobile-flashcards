@@ -34,7 +34,12 @@ export default class Api {
   }
 
   createCard(card) {
-    console.log(card.deckId, card.question, card.answer);
-    return Promise.resolve({});
+    return new Promise(resolve => {
+      this.getDecks().then(decks => {
+        const newDecks = Object.assign({}, decks);
+        newDecks[card.deckId].questions.push(card);
+        AsyncStorage.setItem('decks', JSON.stringify(newDecks)).then(resolve);
+      });
+    });
   }
 }
