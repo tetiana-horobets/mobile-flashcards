@@ -22,6 +22,10 @@ class DeckDetailView extends React.Component {
       <Text>{deck.title}</Text>
       <Text>{deck.questions.length} cards</Text>
       <Button
+        title="Add card"
+        onPress={() => this.props.navigation.navigate('NewCard')}
+      />
+      <Button
         title="Delete deck"
         onPress={() => this.deleteDeck()}
       />
