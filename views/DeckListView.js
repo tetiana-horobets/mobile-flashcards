@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import {loadDecks} from '../store/ActionCreators.js';
+import {loadDecks, selectDeck} from '../store/ActionCreators.js';
 
 class DeckListView extends React.Component {
 
@@ -9,11 +9,18 @@ class DeckListView extends React.Component {
     this.props.loadDecks();
   }
 
+  selectDeck(id) {
+    this.props.navigation.navigate('DeckDetail');
+    this.props.selectDeck(id);
+  }
+
   renderDeck(deck) {
-    return <View key={deck.id}>
-      <Text>{deck.title}</Text>
-      <Text>{deck.questions.length} cards</Text>
-    </View>
+    return <TouchableOpacity key={deck.id} onPress={() => this.selectDeck(deck.id)}>
+      <View>
+        <Text>{deck.title}</Text>
+        <Text>{deck.questions.length} cards</Text>
+      </View>
+    </TouchableOpacity>;
   }
 
   render() {
@@ -24,10 +31,6 @@ class DeckListView extends React.Component {
         data={decks}
         renderItem={item => this.renderDeck(item.item)}
         keyExtractor={item => item.id}
-      />
-      <Button
-        title="Go to Details"
-        onPress={() => this.props.navigation.navigate('DeckDetail')}
       />
     </View>
   }
@@ -48,7 +51,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = {loadDecks}
+const mapDispatchToProps = {loadDecks, selectDeck}
 
 export default connect(
   mapStateToProps,
