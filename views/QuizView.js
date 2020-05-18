@@ -20,6 +20,26 @@ class QuizView extends React.Component {
     this.setState({showAnswer: false});
   }
 
+  renderQuestionAnswer(question) {
+    if (this.state.showAnswer) {
+      return <View>
+        <Text>{question.answer}</Text>
+        <Button
+          title="Show question"
+          onPress={() => this.showQuestion()}
+        />
+      </View>;
+    }
+
+    return <View>
+      <Text>{question.question}</Text>
+      <Button
+        title="Show answer"
+        onPress={() => this.showAnswer()}
+      />
+    </View>;
+  }
+
   render() {
     const deck = this.props.decks[this.props.selectedDeck];
 
@@ -30,23 +50,9 @@ class QuizView extends React.Component {
     }
 
     const question = deck.questions[0];
-
-    if (this.state.showAnswer) {
-      return <View style={styles.container}>
-        <Text>{question.answer}</Text>
-        <Button
-          title="Show question"
-          onPress={() => this.showQuestion()}
-        />
-      </View>;
-    }
-
+    
     return <View style={styles.container}>
-      <Text>{question.question}</Text>
-      <Button
-        title="Show answer"
-        onPress={() => this.showAnswer()}
-      />
+      {this.renderQuestionAnswer(question)}
     </View>;
   }
 }
