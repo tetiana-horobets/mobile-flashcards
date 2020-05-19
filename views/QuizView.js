@@ -8,7 +8,9 @@ class QuizView extends React.Component {
     super(props);
 
     this.state = {
-      showAnswer: false
+      showAnswer: false,
+      totalAnswers: 0,
+      correctAnswers: 0
     };
   }
 
@@ -18,6 +20,19 @@ class QuizView extends React.Component {
 
   showQuestion() {
     this.setState({showAnswer: false});
+  }
+
+  saveAnswer(isCorrect) {
+    if (isCorrect) {
+      this.setState({
+        correctAnswers: this.state.correctAnswers + 1,
+        totalAnswers: this.state.totalAnswers + 1
+      });
+    } else {
+      this.setState({
+        totalAnswers: this.state.totalAnswers + 1
+      });
+    }
   }
 
   renderQuestionAnswer(question) {
@@ -49,10 +64,18 @@ class QuizView extends React.Component {
       </View>;
     }
 
-    const question = deck.questions[0];
-    
+    const question = deck.questions[this.state.totalAnswers];
+
     return <View style={styles.container}>
       {this.renderQuestionAnswer(question)}
+      <Button
+        title="Correct"
+        onPress={() => this.saveAnswer(true)}
+      />
+      <Button
+        title="Incorrect"
+        onPress={() => this.saveAnswer(false)}
+      />
     </View>;
   }
 }
