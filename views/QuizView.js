@@ -64,6 +64,13 @@ class QuizView extends React.Component {
       </View>;
     }
 
+    if (deck.questions.length === this.state.totalAnswers) {
+      return <View style={styles.container}>
+        <Text>The quiz has been completed.</Text>
+        <Text>You answered correctly {this.state.correctAnswers} times out of {this.state.totalAnswers} questions.</Text>
+      </View>;
+    }
+
     const question = deck.questions[this.state.totalAnswers];
 
     return <View style={styles.container}>
