@@ -22,6 +22,10 @@ class QuizView extends React.Component {
     this.setState({showAnswer: false});
   }
 
+  restartQuiz() {
+    this.setState({totalAnswers: 0, correctAnswers: 0});
+  }
+
   saveAnswer(isCorrect) {
     if (isCorrect) {
       this.setState({
@@ -68,6 +72,10 @@ class QuizView extends React.Component {
       return <View style={styles.container}>
         <Text>The quiz has been completed.</Text>
         <Text>You answered correctly {this.state.correctAnswers} times out of {this.state.totalAnswers} questions.</Text>
+        <Button
+          title="Restart quiz"
+          onPress={() => this.restartQuiz()}
+        />
       </View>;
     }
 
