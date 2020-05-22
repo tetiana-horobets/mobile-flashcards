@@ -76,6 +76,10 @@ class QuizView extends React.Component {
           title="Restart quiz"
           onPress={() => this.restartQuiz()}
         />
+        <Button
+          title="End quiz"
+          onPress={() => this.props.navigation.navigate('DeckDetail')}
+        />
       </View>;
     }
 
