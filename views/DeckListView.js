@@ -16,9 +16,9 @@ class DeckListView extends React.Component {
 
   renderDeck(deck) {
     return <TouchableOpacity key={deck.id} onPress={() => this.selectDeck(deck.id)}>
-      <View>
-        <Text>{deck.title}</Text>
-        <Text>{deck.questions.length} cards</Text>
+      <View style={styles.deck}>
+        <Text style={styles.deckTitle}>{deck.title}</Text>
+        <Text style={styles.deckCount}>{deck.questions.length} cards</Text>
       </View>
     </TouchableOpacity>;
   }
@@ -40,14 +40,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
+  deck: {
+    backgroundColor: '#e1f0eb',
+    borderColor: 'grey',
+    borderWidth: 2,
+    borderRadius: 10,
+    marginTop: 16,
+    marginLeft: 16,
+    marginRight: 16,
+    padding: 16
+  },
+  deckTitle: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  deckCount: {
+    alignSelf: 'flex-end'
+  }
 });
 
 const mapStateToProps = state => {
   return {
-    decks: state.decks,
+    decks: state.decks
   }
 }
 
