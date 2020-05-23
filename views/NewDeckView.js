@@ -19,9 +19,10 @@ class NewDeckView extends React.Component {
 
   render() {
     return <View style={styles.container}>
-      <Text>NewDeckView</Text>
-      <TextInput
+      <Text style={styles.title}>Create new deck</Text>
+      <TextInput style={styles.input}
         value={this.state.title}
+        placeholder={'Deck name'}
         onChangeText={text => this.setState({title: text})}
       />
       <Button
@@ -40,6 +41,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    fontSize: 20
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderRadius: 2,
+    margin: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
+    fontSize: 20,
+    alignSelf: 'stretch'
+  }
 });
 
 const mapStateToProps = state => {
