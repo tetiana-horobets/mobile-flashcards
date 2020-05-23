@@ -10,7 +10,7 @@ class DeckListView extends React.Component {
   }
 
   selectDeck(id) {
-    this.props.navigation.navigate('DeckDetail');
+    this.props.navigation.navigate('Deck details');
     this.props.selectDeck(id);
   }
 

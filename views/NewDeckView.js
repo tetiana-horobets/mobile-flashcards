@@ -13,7 +13,7 @@ class NewDeckView extends React.Component {
 
   createDeck() {
     this.props.createDeck({title: this.state.title});
-    this.props.navigation.navigate('DeckDetail');
+    this.props.navigation.navigate('Deck details');
     this.setState({title: ''});
   }
 

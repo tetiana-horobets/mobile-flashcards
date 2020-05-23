@@ -21,7 +21,7 @@ class NewCardView extends React.Component {
       answer: this.state.answer
     };
     this.props.createCard(card);
-    this.props.navigation.navigate('DeckDetail');
+    this.props.navigation.navigate('Deck details');
     this.setState({question: '', answer: ''});
   }
 
