@@ -38,11 +38,13 @@ class QuizView extends React.Component {
     if (isCorrect) {
       this.setState({
         correctAnswers: this.state.correctAnswers + 1,
-        totalAnswers: this.state.totalAnswers + 1
+        totalAnswers: this.state.totalAnswers + 1,
+        showAnswer: false
       });
     } else {
       this.setState({
-        totalAnswers: this.state.totalAnswers + 1
+        totalAnswers: this.state.totalAnswers + 1,
+        showAnswer: false
       });
     }
   }
