@@ -24,7 +24,7 @@ class DeckDetailView extends React.Component {
       <View style={styles.button}>
         <Button
           title="Add card"
-          onPress={() => this.props.navigation.navigate('NewCard')}
+          onPress={() => this.props.navigation.navigate('New card')}
         />
       </View>
       <View style={styles.button}>

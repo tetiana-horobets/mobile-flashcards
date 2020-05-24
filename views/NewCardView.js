@@ -27,12 +27,17 @@ class NewCardView extends React.Component {
 
   render() {
     return <View style={styles.container}>
+      <Text style={styles.title}>Create new card</Text>
       <TextInput
+        style={styles.input}
         value={this.state.question}
+        placeholder={'Card question'}
         onChangeText={text => this.setState({question: text})}
       />
       <TextInput
+        style={styles.input}
         value={this.state.answer}
+        placeholder={'Card answer'}
         onChangeText={text => this.setState({answer: text})}
       />
       <Button
@@ -51,6 +56,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    fontSize: 20
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: 'grey',
+    borderRadius: 2,
+    margin: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
+    fontSize: 20,
+    alignSelf: 'stretch'
+  }
 });
 
 const mapStateToProps = state => {

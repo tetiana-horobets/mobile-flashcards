@@ -20,7 +20,8 @@ class NewDeckView extends React.Component {
   render() {
     return <View style={styles.container}>
       <Text style={styles.title}>Create new deck</Text>
-      <TextInput style={styles.input}
+      <TextInput
+        style={styles.input}
         value={this.state.title}
         placeholder={'Deck name'}
         onChangeText={text => this.setState({title: text})}

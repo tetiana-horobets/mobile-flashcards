@@ -16,7 +16,7 @@ export default class HomeView extends React.Component {
         options={{ title: 'Welcome' }}
       />
       <Stack.Screen name="Deck details" component={DeckDetailView} />
-      <Stack.Screen name="NewCard" component={NewCardView} />
+      <Stack.Screen name="New card" component={NewCardView} />
       <Stack.Screen name="Quiz" component={QuizView} />
     </Stack.Navigator>
   }
