@@ -42,20 +42,24 @@ class QuizView extends React.Component {
   renderQuestionAnswer(question) {
     if (this.state.showAnswer) {
       return <View>
-        <Text>{question.answer}</Text>
-        <Button
-          title="Show question"
-          onPress={() => this.showQuestion()}
-        />
+        <Text style={styles.questionAnswer}>{question.answer}</Text>
+        <View style={styles.questionAnswerButton}>
+          <Button
+            title="Show question"
+            onPress={() => this.showQuestion()}
+          />
+        </View>
       </View>;
     }
 
     return <View>
-      <Text>{question.question}</Text>
-      <Button
-        title="Show answer"
-        onPress={() => this.showAnswer()}
-      />
+      <Text style={styles.questionAnswer}>{question.question}</Text>
+      <View style={styles.questionAnswerButton}>
+        <Button
+          title="Show answer"
+          onPress={() => this.showAnswer()}
+        />
+      </View>
     </View>;
   }
 
@@ -64,7 +68,7 @@ class QuizView extends React.Component {
 
     if (!deck.questions.length) {
       return <View style={styles.container}>
-        <Text>Sorry, you cannot take a quiz because there are no cards in the deck.</Text>
+        <Text style={styles.alert}>Sorry, you cannot take a quiz because there are no cards in the deck.</Text>
       </View>;
     }
 
@@ -72,14 +76,18 @@ class QuizView extends React.Component {
       return <View style={styles.container}>
         <Text>The quiz has been completed.</Text>
         <Text>You answered correctly {this.state.correctAnswers} times out of {this.state.totalAnswers} questions.</Text>
-        <Button
-          title="Restart quiz"
-          onPress={() => this.restartQuiz()}
-        />
-        <Button
-          title="End quiz"
-          onPress={() => this.props.navigation.navigate('Deck details')}
-        />
+        <View style={styles.button}>
+          <Button
+            title="Restart quiz"
+            onPress={() => this.restartQuiz()}
+          />
+        </View>
+        <View style={styles.button}>
+          <Button
+            title="End quiz"
+            onPress={() => this.props.navigation.navigate('Deck details')}
+          />
+        </View>
       </View>;
     }
 
@@ -87,14 +95,18 @@ class QuizView extends React.Component {
 
     return <View style={styles.container}>
       {this.renderQuestionAnswer(question)}
-      <Button
-        title="Correct"
-        onPress={() => this.saveAnswer(true)}
-      />
-      <Button
-        title="Incorrect"
-        onPress={() => this.saveAnswer(false)}
-      />
+      <View style={styles.button}>
+        <Button
+          title="Correct"
+          onPress={() => this.saveAnswer(true)}
+        />
+      </View>
+      <View style={styles.button}>
+        <Button
+          title="Incorrect"
+          onPress={() => this.saveAnswer(false)}
+        />
+      </View>
     </View>;
   }
 }
@@ -106,6 +118,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+    marginTop: 10
+  },
+  alert: {
+    width: '80%',
+    color: 'red'
+  },
+  questionAnswer: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignSelf: 'stretch'
+  },
+  questionAnswerButton: {
+    marginTop: 10,
+    width: '100%',
+    alignSelf: 'center'
+  }
 });
 
 const mapStateToProps = state => {

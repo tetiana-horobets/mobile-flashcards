@@ -29,14 +29,12 @@ class DeckDetailView extends React.Component {
       </View>
       <View style={styles.button}>
         <Button
-          style={styles.button}
           title="Start quiz"
           onPress={() => this.props.navigation.navigate('Quiz')}
         />
       </View>
       <View style={styles.button}>
         <Button
-          style={styles.button}
           title="Delete deck"
           onPress={() => this.deleteDeck()}
         />
