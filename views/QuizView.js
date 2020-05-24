@@ -94,6 +94,7 @@ class QuizView extends React.Component {
     const question = deck.questions[this.state.totalAnswers];
 
     return <View style={styles.container}>
+      <Text>Question {this.state.totalAnswers + 1} out of {deck.questions.length}</Text>
       {this.renderQuestionAnswer(question)}
       <View style={styles.button}>
         <Button
