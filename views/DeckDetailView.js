@@ -19,20 +19,28 @@ class DeckDetailView extends React.Component {
 
     const deck = this.props.decks[this.props.selectedDeck];
     return <View style={styles.container}>
-      <Text>{deck.title}</Text>
+      <Text style={styles.deckTitle}>{deck.title}</Text>
       <Text>{deck.questions.length} cards</Text>
-      <Button
-        title="Add card"
-        onPress={() => this.props.navigation.navigate('NewCard')}
-      />
-      <Button
-        title="Start quiz"
-        onPress={() => this.props.navigation.navigate('Quiz')}
-      />
-      <Button
-        title="Delete deck"
-        onPress={() => this.deleteDeck()}
-      />
+      <View style={styles.button}>
+        <Button
+          title="Add card"
+          onPress={() => this.props.navigation.navigate('NewCard')}
+        />
+      </View>
+      <View style={styles.button}>
+        <Button
+          style={styles.button}
+          title="Start quiz"
+          onPress={() => this.props.navigation.navigate('Quiz')}
+        />
+      </View>
+      <View style={styles.button}>
+        <Button
+          style={styles.button}
+          title="Delete deck"
+          onPress={() => this.deleteDeck()}
+        />
+      </View>
     </View>
   }
 }
@@ -44,6 +52,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  deckTitle: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  button: {
+    marginTop: 10
+  }
 });
 
 const mapStateToProps = state => {
