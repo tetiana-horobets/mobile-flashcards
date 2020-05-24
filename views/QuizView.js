@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button} from 'react-native';
 import { connect } from 'react-redux';
+import {clearNotification, scheduleNotification} from '../Notification.js';
 
 class QuizView extends React.Component {
 
@@ -27,6 +28,13 @@ class QuizView extends React.Component {
   }
 
   saveAnswer(isCorrect) {
+    const deck = this.props.decks[this.props.selectedDeck];
+
+    if (deck.questions.length - 1 === this.state.totalAnswers) {
+      clearNotification()
+        .then(() => scheduleNotification());
+    }
+
     if (isCorrect) {
       this.setState({
         correctAnswers: this.state.correctAnswers + 1,
